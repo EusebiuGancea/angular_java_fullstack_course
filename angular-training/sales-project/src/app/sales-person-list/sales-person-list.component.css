@@ -1,0 +1,9 @@
+tr.highlight td {
+    background-color: green;
+    font-weight: bold;
+}
+
+tr.red_highlight td {
+    background-color: red;
+    font-weight: bold;
+}
