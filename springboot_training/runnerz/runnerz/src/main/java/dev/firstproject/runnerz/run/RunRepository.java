@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RunRepository {
@@ -17,7 +18,18 @@ public class RunRepository {
         return runs;
     }
 
-    // is doing some initializations
+    Optional<Run> findById(Integer id) {
+        return runs.stream()
+                .filter(run -> run.id() == id)
+                .findFirst();
+    }
+
+    void create(Run run) {
+        runs.add(run);
+    }
+
+
+    // PostConstruct is doing some initializations
     @PostConstruct
     private void init() {
         runs.add(new Run(1,
