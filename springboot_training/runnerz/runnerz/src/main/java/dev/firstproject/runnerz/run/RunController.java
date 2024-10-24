@@ -21,11 +21,13 @@ public class RunController {
         this.runRepository = runRepository;
     }
 
+    //get all
     @GetMapping()
     List<Run> findAll() {
         return runRepository.findAll();
     }
 
+    //get by id
     @GetMapping("/{id}")
     Run findById(@PathVariable Integer id) {
 
@@ -46,7 +48,7 @@ public class RunController {
     //put
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping ("/{id}")
-    void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
+    void update(@Valid  @RequestBody Run run, @PathVariable Integer id) {
         runRepository.update(run,id);
     }
     //delete
