@@ -1,6 +1,5 @@
 package dev.firstproject.runnerz.user;
 
-
 public record User(
         Integer id,
         String name,
