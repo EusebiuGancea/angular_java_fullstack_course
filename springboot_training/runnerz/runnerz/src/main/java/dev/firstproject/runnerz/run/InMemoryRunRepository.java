@@ -1,7 +1,5 @@
-package dev.danvega.runnerz.run;
+package dev.firstproject.runnerz.run;
 
-import dev.firstproject.runnerz.run.Run;
-import dev.firstproject.runnerz.run.RunRepository;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Repository
-class InMemoryRunRepository implements RunRepository {
+class InMemoryRunRepository {
 
     private static final Logger log = LoggerFactory.getLogger(InMemoryRunRepository.class);
     private final List<Run> runs = new ArrayList<>();
