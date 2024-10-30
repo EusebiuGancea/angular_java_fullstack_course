@@ -68,22 +68,6 @@ class InMemoryRunRepository {
     }
 
 
-    @PostConstruct
-    private void init() {
-        runs.add(new Run(1,
-                "Monday Morning Run",
-                LocalDateTime.now(),
-                LocalDateTime.now().plus(30, ChronoUnit.MINUTES),
-                3,
-                Location.INDOOR));
-
-        runs.add(new Run(2,
-                "Wednesday Evening Run",
-                LocalDateTime.now(),
-                LocalDateTime.now().plus(60, ChronoUnit.MINUTES),
-                6,
-                Location.INDOOR));
-    }
 
 
 }
