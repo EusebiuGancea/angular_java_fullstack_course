@@ -3,7 +3,7 @@ package dev.firstproject.runnerz.run;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
+//import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-class InMemoryRunRepository {
+//@Repository
+public class InMemoryRunRepository {
 
     private static final Logger log = LoggerFactory.getLogger(InMemoryRunRepository.class);
     private final List<Run> runs = new ArrayList<>();
@@ -34,7 +35,8 @@ class InMemoryRunRepository {
                 run.startedOn(),
                 run.completedOn(),
                 run.miles(),
-                run.location());
+                run.location(),
+                null);
 
         runs.add(newRun);
     }
@@ -68,6 +70,22 @@ class InMemoryRunRepository {
     }
 
 
+    @PostConstruct
+    private void init() {
+        runs.add(new Run(1,
+                "Monday Morning Run",
+                LocalDateTime.now(),
+                LocalDateTime.now().plus(30, ChronoUnit.MINUTES),
+                3,
+                Location.INDOOR, null));
+
+        runs.add(new Run(2,
+                "Wednesday Evening Run",
+                LocalDateTime.now(),
+                LocalDateTime.now().plus(60, ChronoUnit.MINUTES),
+                6,
+                Location.INDOOR, null));
+    }
 
 
 }
