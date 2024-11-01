@@ -48,12 +48,15 @@ public class RunController {
     void update(@Valid  @RequestBody Run run, @PathVariable Integer id) {
         runRepository.save(run);
     }
-    //delete
+    // delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id) {
-        runRepository.delete(runRepository.findById(id).get());
+        var run = runRepository.findById(id)
+                .orElseThrow(RunNotFoundException::new); // Throw custom exception if not found
+        runRepository.delete(run);
     }
+
 
     @GetMapping("/location/{location}")
     List<Run> findByLocation(@PathVariable String location) {
